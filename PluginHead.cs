@@ -3,11 +3,11 @@ using PerseusApi.Matrix;
 using System.IO;
 using PluginInterop;
 using System.Text;
-using PluginHead3.Properties;
+using PluginHead3.Properties; // replace PluginHead3 to your project or solution name
 
 namespace PluginHead
 {
-    public class Head : PluginInterop.Python.MatrixProcessing
+    public class Head : PluginInterop.Python.MatrixProcessing // if you use R, replace Python to R
     {
         public override string Heading => "Tutorial";
         public override string Name => "Header";
@@ -17,7 +17,7 @@ namespace PluginHead
 
         protected override bool TryGetCodeFile(Parameters param, out string codeFile)
         {
-            byte[] code = (byte[])Resources.ResourceManager.GetObject("header_c_sharp");
+            byte[] code = (byte[])Resources.ResourceManager.GetObject("header_c_sharpPy"); // put the script to resources via edit properies file, and replace header_c_sharpPy to your script name
             codeFile = Path.GetTempFileName();
             File.WriteAllText(codeFile, Encoding.UTF8.GetString(code));
             return true;
