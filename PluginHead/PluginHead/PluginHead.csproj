@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F1908D8B-FC63-44BD-A401-99162D989DD1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PluginHead</RootNamespace>
+    <AssemblyName>PluginHead</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BaseLib, Version=1.6.0.282, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BaseLib.1.6.0.282\lib\net45\BaseLib.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseLibS, Version=1.6.4.133, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BaseLibS.1.6.4.133\lib\net472\BaseLibS.dll</HintPath>
+    </Reference>
+    <Reference Include="NumPluginSvm, Version=1.6.0.100, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NumPluginSvm.1.6.0.100\lib\net45\NumPluginSvm.dll</HintPath>
+    </Reference>
+    <Reference Include="PerseusApi, Version=1.6.4.128, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PerseusApi.1.6.4.128\lib\net472\PerseusApi.dll</HintPath>
+    </Reference>
+    <Reference Include="PerseusLibS, Version=1.6.10.126, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PerseusLibS.1.6.10.126\lib\net472\PerseusLibS.dll</HintPath>
+    </Reference>
+    <Reference Include="PerseusPluginLib, Version=1.6.4.128, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PerseusPluginLib.1.6.4.128\lib\net472\PerseusPluginLib.dll</HintPath>
+    </Reference>
+    <Reference Include="PluginInterop, Version=1.6.4.18, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PluginInterop.1.6.4.18\lib\net472\PluginInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PluginHead_c_sharp.cs" />
+    <Compile Include="PluginHead_with_resource.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\header_c_sharpR.R" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\header_c_sharpPy.py" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

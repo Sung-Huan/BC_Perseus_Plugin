@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PluginInterop</name>
+    </assembly>
+    <members>
+        <member name="F:PluginInterop.CheckedFileParamControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.CheckedFileParamControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PluginInterop.CheckedFileParamControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PluginInterop.InteropBase">
+             <summary>
+             Base class for all interop functionality.
+            
+             Provides virtual implementations for obtaining the path to the executable (e.g. Python), the path to the script,
+             and unstructured parameters.
+             </summary>
+        </member>
+        <member name="P:PluginInterop.InteropBase.InterpreterLabel">
+            <summary>
+            Interpreter path label in GUI.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.InteropBase.InterpreterFilter">
+            <summary>
+            Interpreter file filter for file chooser in parameter GUI.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.InteropBase.CodeLabel">
+            <summary>
+            Code file label in GUI.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.InteropBase.CodeFilter">
+            <summary>
+            Code file filter for file chooser in parameter GUI
+            </summary>
+        </member>
+        <member name="P:PluginInterop.InteropBase.AdditionalArgumentsLabel">
+            <summary>
+            Unstructured parameters label in GUI.
+            These parameters circumvent the usual XML serialization of parameters and are meant for simple scripts.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.InteropBase.TryGetCodeFile(BaseLibS.Param.Parameters,System.String@)">
+            <summary>
+            Extract the code file as a string. See <see cref="M:PluginInterop.InteropBase.CodeFileParam"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.InteropBase.GetCommandLineArguments(BaseLibS.Param.Parameters)">
+            <summary>
+            Get parameters passed on the command line. Defaults to <see cref="P:PluginInterop.InteropBase.AdditionalArgumentsLabel"/>.
+            Other plugins might save parameters to XML file and pass the file path <see cref="M:PluginInterop.Utils.WriteParametersToFile(BaseLibS.Param.Parameters)"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.InteropBase.GetExectuable(BaseLibS.Param.Parameters)">
+            <summary>
+            Extract the executable name. See <see cref="M:PluginInterop.InteropBase.ExecutableParam"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.InteropBase.ExecutableParam">
+            <summary>
+            FileParam for specifying the exectable. See <see cref="M:PluginInterop.InteropBase.GetExectuable(BaseLibS.Param.Parameters)"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.InteropBase.CodeFileParam">
+            <summary>
+            FileParam for specifying the code file. See <see cref="M:PluginInterop.InteropBase.TryGetCodeFile(BaseLibS.Param.Parameters,System.String@)"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.InteropBase.TryFindExecutable(System.String@)">
+            <summary>
+            Returns true and the path of the executable if found.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.InteropBase.AdditionalArgumentsParam">
+            <summary>
+            Create parameter for additional unstructured arguments.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.MatrixAnalysis.SpecificParameters(PerseusApi.Matrix.IMatrixData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Code file'
+            and 'Additional arguments' parameters. Overwrite this function for custom structured parameters.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.MatrixAnalysis.GetParameters(PerseusApi.Matrix.IMatrixData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Executable', 'Code file' and 'Additional arguments' parameters.
+            Includes buttons for preview downloads of 'Data' and 'Parameters' for development purposes.
+            Overwrite <see cref="M:PluginInterop.MatrixAnalysis.SpecificParameters(PerseusApi.Matrix.IMatrixData,System.String@)"/> to add specific parameter. Overwrite this function for full control.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.NetworkUpload.GetParameters(System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of 'Code file' and 'Executable'. Includes buttons
+            for preview downloads of 'Parameters' for development purposes.
+            Overwrite this function to provide custom parameters.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.NetworkUpload.SpecificParameters(System.String@)">
+            <summary>
+            Create specific processing parameters. Defaults to 'Code file'. You can provide custom parameters
+            by overriding this function. Called by <see cref="M:PluginInterop.NetworkUpload.GetParameters(System.String@)"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.NetworkProcessing.SpecificParameters(PerseusApi.Network.INetworkData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Code file'
+            and 'Additional arguments' parameters. Overwrite this function for custom structured parameters.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.NetworkProcessing.GetParameters(PerseusApi.Network.INetworkData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Executable', 'Code file' and 'Additional arguments' parameters.
+            Includes buttons for preview downloads of 'Data' and 'Parameters' for development purposes.
+            Overwrite <see cref="M:PluginInterop.NetworkProcessing.SpecificParameters(PerseusApi.Network.INetworkData,System.String@)"/> to add specific parameter. Overwrite this function for full control.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Python.NetworkUpload.ReqiredPythonPackages">
+            <summary>
+            List of all required python packages.
+            These packages will be checked by <see cref="M:PluginInterop.Python.NetworkUpload.ExecutableParam"/>.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Python.NetworkProcessing.ReqiredPythonPackages">
+            <summary>
+            List of all required python packages.
+            These packages will be checked by <see cref="M:PluginInterop.Python.NetworkProcessing.ExecutableParam"/>.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Python.NetworkFromMatrix.ReqiredPythonPackages">
+            <summary>
+            List of all required python packages.
+            These packages will be checked by <see cref="M:PluginInterop.Python.NetworkFromMatrix.ExecutableParam"/>.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Python.MatrixProcessing.ReqiredPythonPackages">
+            <summary>
+            List of all required python packages.
+            These packages will be checked by <see cref="M:PluginInterop.Python.MatrixProcessing.ExecutableParam"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.Python.Utils.TryFindPythonExecutable(System.String@)">
+            <summary>
+            Searches for python executable with perseuspy installed in PATH and installation folders.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PluginInterop.Python.Utils.CheckPythonInstallation(System.String)">
+            <summary>
+            Returns true if executable path points to python and can import perseuspy.
+            </summary>
+            <param name="exeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PluginInterop.Python.Utils.CheckPythonInstallation(System.String,System.String[])">
+            <summary>
+            Returns true if executable path points to python and can import the specified packages.
+            </summary>
+            <param name="exeName"></param>
+            <param name="packages"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PluginInterop.Python.Utils.TryFindExecutableDelegate">
+            <summary>
+            Type definition for the <see cref="T:PluginInterop.Python.Utils.TryFindExecutableDelegate"/> used in <see cref="M:PluginInterop.Python.Utils.CreateCheckedFileParam(System.String,System.String,PluginInterop.Python.Utils.TryFindExecutableDelegate,System.String[])"/>.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PluginInterop.Python.Utils.CreateCheckedFileParam(System.String,System.String,PluginInterop.Python.Utils.TryFindExecutableDelegate,System.String[])">
+            <summary>
+            Create a checked file param which changes color if the python installation passes <see cref="M:PluginInterop.Python.Utils.CheckPythonInstallation(System.String)"/>.
+            </summary>
+            <param name="interpreterLabel"></param>
+            <param name="interpreterFilter"></param>
+            <param name="tryFindExecutable"></param>
+            <param name="packages">Passed directly to python.exe -e</param>
+            <returns></returns>
+        </member>
+        <member name="M:PluginInterop.NetworkFromMatrix.SpecificParameters(PerseusApi.Matrix.IMatrixData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Code file'
+            and 'Additional arguments' parameters. Overwrite this function for custom structured parameters.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.NetworkFromMatrix.GetParameters(PerseusApi.Matrix.IMatrixData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Executable', 'Code file' and 'Additional arguments' parameters.
+            Includes buttons for preview downloads of 'Data' and 'Parameters' for development purposes.
+            Overwrite <see cref="M:PluginInterop.NetworkFromMatrix.SpecificParameters(PerseusApi.Matrix.IMatrixData,System.String@)"/> to add specific parameter. Overwrite this function for full control.
+            </summary>
+        </member>
+        <member name="T:PluginInterop.MatrixProcessing">
+             <summary>
+             Language agnostic MatrixProcessing implementation.
+            
+             This class serves as a basis for language-specific implementations.
+             </summary>
+        </member>
+        <member name="M:PluginInterop.MatrixProcessing.SpecificParameters(PerseusApi.Matrix.IMatrixData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Code file'
+            and 'Additional arguments' parameters. Overwrite this function for custom structured parameters.
+            You might have to additionally override <see cref="!:GetCommandLineArgument"/> to match
+            your custom parameters. To pass parameters as XML file you can use <see cref="M:PluginInterop.Utils.WriteParametersToFile(BaseLibS.Param.Parameters)"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.MatrixProcessing.GetParameters(PerseusApi.Matrix.IMatrixData,System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of generic 'Executable', 'Code file' and 'Additional arguments' parameters.
+            Includes buttons for preview downloads of 'Data' and 'Parameters' for development purposes.
+            Overwrite <see cref="M:PluginInterop.MatrixProcessing.SpecificParameters(PerseusApi.Matrix.IMatrixData,System.String@)"/> to add specific parameter. Overwrite this function for full control.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.MatrixUpload.GetParameters(System.String@)">
+            <summary>
+            Create the parameters for the GUI with default of 'Code file' and 'Executable'. Includes buttons
+            for preview downloads of 'Parameters' for development purposes.
+            Overwrite this function to provide custom parameters.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.MatrixUpload.SpecificParameters(System.String@)">
+            <summary>
+            Create specific processing parameters. Defaults to 'Code file'. You can provide custom parameters
+            by overriding this function. Called by <see cref="M:PluginInterop.MatrixUpload.GetParameters(System.String@)"/>.
+            </summary>
+        </member>
+        <member name="T:PluginInterop.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Properties.Resources.ProjectUrl">
+            <summary>
+              Looks up a localized string similar to https://github.com/jdrudolph/PluginInterop.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Properties.Resources.python_logo_master_v3_TM_flattened">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Properties.Resources.RemoteExeNotSpecified">
+            <summary>
+              Looks up a localized string similar to Please specify an executable. You can either provide its full file path or make sure that it is listed in the PATH and just provide its name. For more information visit the project homepage..
+            </summary>
+        </member>
+        <member name="P:PluginInterop.Properties.Resources.Rlogo">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.R.Utils.TryFindRExecutable(System.String@)">
+            <summary>
+            Searches for python executable with perseuspy installed in PATH and installation folders.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PluginInterop.R.Utils.CheckRInstallation(System.String)">
+            <summary>
+            Returns true if executable path points to python and can import perseuspy.
+            </summary>
+            <param name="exeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PluginInterop.R.Utils.CreateCheckedFileParam(System.String,System.String,PluginInterop.Python.Utils.TryFindExecutableDelegate)">
+            <summary>
+            Try to find R executable and show green light if found.
+            </summary>
+        </member>
+        <member name="T:PluginInterop.Utils">
+            <summary>
+            Provides a number of utility functions
+            </summary>
+        </member>
+        <member name="M:PluginInterop.Utils.WriteParametersToFile(BaseLibS.Param.Parameters)">
+            <summary>
+            Write parameters to temporary file.
+            Useful as alternative implementation of <see cref="M:PluginInterop.InteropBase.GetCommandLineArguments(BaseLibS.Param.Parameters)"/>.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.Utils.DataPreviewButton(PerseusApi.Generic.IData)">
+            <summary>
+            Create a preview button for the GUI which can be used save the data to file.
+            This is especially useful for development and debugging.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.Utils.ParametersPreviewButton(BaseLibS.Param.Parameters)">
+            <summary>
+            Create a preview button for the GUI which can be used save the parameters to file.
+            This is especially useful for development and debugging.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.Utils.RunProcess(System.String,System.String,System.Action{System.String},System.String@)">
+            <summary>
+            Runs the executable with the provided arguments. Returns the exit code of the process,
+            where 0 indicates success.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.Utils.ReadSupplementaryData(System.String[],PerseusApi.Generic.DataType[],PerseusApi.Generic.ProcessInfo)">
+            <summary>
+            Read supplementary files according to file paths and data types.
+            </summary>
+        </member>
+        <member name="M:PluginInterop.Utils.CreateTemporaryPath(PerseusApi.Generic.DataType)">
+            <summary>
+            Create a temporary path for a specific data type.
+            </summary>
+        </member>
+    </members>
+</doc>
